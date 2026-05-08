@@ -2,13 +2,7 @@ package main
 
 import "fmt"
 
-func main(){
-    compliments := []string{
-        "You are doing great",
-        "Your consistency will pay off",
-        "You have a brilliant mind",
-        "Your smile brightens the room",
-        "You are stronger than you think",
+	/*
         "Your kindness inspires others",
         "You are full of creativity",
         "You make people feel valued",
@@ -54,6 +48,18 @@ func main(){
         "Your kindness makes a difference",
         "You are unstoppable",
         "Your presence is a gift",
-    }
+}*/
+   func main(){
+fmt.Println("Welcome to the Compliment Generator")
 
-}
+    compliments := []string{
+        "You are doing great",
+        "Your consistency will pay off",
+        "You have a brilliant mind",
+        "Your smile brightens the room",
+        "You are stronger than you think",
+	}
+
+	fmt.Println(compliments[0])
+	
+   }
