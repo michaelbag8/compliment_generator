@@ -61,5 +61,7 @@ fmt.Println("Welcome to the Compliment Generator")
 	}
 
 	fmt.Println(compliments[0])
+
+	fmt.Println(compliments[1:3])
 	
    }
