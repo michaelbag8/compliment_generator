@@ -89,10 +89,11 @@ func main() {
 	fmt.Println("\033[41m<><> Welcome to the Compliment Generator <><>\033[0m")
 
 	for {
-		input := UserInput()
+
 		randomC := Generator(compliments)
+
 		fmt.Println("=== Press ENTER to receive a compliment === || \"quit\" to exit ")
-	
+		input := UserInput()
 
 		// to trim the \n from terminal
 		input = strings.TrimSpace(input)
