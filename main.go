@@ -38,11 +38,10 @@ var complimentsByCategory = map[string][]string{
 }
 
 
-func Generator(compliments map[string][]string, category string) string {
+func Generator(compliments map[string][]string, category string) (string, error) {
 	slice, exist := compliments[category]
 	if !exist || len(slice) == 0 {
-		fmt.Println("Category doesn't exist or invalid compliments")
-
+		return "", fmt.Errorf("category doesn't exist or invalid compliments")
 	}
 	// Seed number generator with current time
 	source := rand.NewSource(time.Now().UnixNano())
@@ -50,13 +49,13 @@ func Generator(compliments map[string][]string, category string) string {
 
 	indexR := r.Intn(len(slice))
 
-	return slice[indexR]
+	return slice[indexR], nil
 }
 
 func UserInput() string {
 	reader := bufio.NewReader(os.Stdin)
 	input, err := reader.ReadString('\n')
-	input = strings.TrimSpace(input)
+	input = strings.TrimSpace(strings.ToLower(input))
 	if err != nil {
 		fmt.Println("Error reading user input")
 		os.Exit(1)
@@ -74,7 +73,7 @@ func main() {
 	fmt.Println("1. Motivational")
 	fmt.Println("2. Confidence")
 	fmt.Println("3. Kindness")
-	fmt.Println("Type a category number and press ENTER (or type 'quit' to exit)")
+	fmt.Println("Type a category and press ENTER (or type 'quit' to exit)")
 
 	for {
     fmt.Print(">>> ")
@@ -84,25 +83,15 @@ func main() {
         break
     }
 
-    compliment := Generator(complimentsByCategory, input)
-    fmt.Println("\033[32m" + compliment + "\033[0m")
+    compliment, err := Generator(complimentsByCategory, input)
+	if err == nil{
+		fmt.Println("\033[32m" + compliment + "\033[0m")
+	}else{
+		fmt.Println("error: loading generator function")
+	}
+    
 }
-	// for {
-	// 	fmt.Print(">>> ")
 
-	// 	if input == "quit" {
-	// 		fmt.Println("Goodbye!")
-	// 		break
-	// 	}
-
-	// 	// Check if category exists
-	// 	if _, ok := complimentsByCategory[input]; ok {
-	// 		// index := r.Intn(len(compliments))
-	// 		fmt.Println("\033[32m" + sliceOfIndex + "\033[0m")
-	// 	} else {
-	// 		fmt.Println("Invalid category. Try motivational, confidence, or kindness.")
-	// 	}
-	// }
 }
 
 
