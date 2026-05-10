@@ -87,7 +87,7 @@ func main() {
 	if err == nil{
 		fmt.Println("\033[32m" + compliment + "\033[0m")
 	}else{
-		fmt.Println("error: loading generator function")
+		fmt.Println("error: unknown category")
 	}
     
 }
