@@ -65,9 +65,6 @@ func UserInput() string {
 
 
 func main() {
-
-	//input := UserInput()
-	//sliceOfIndex := Generator(complimentsByCategory, input)
 	fmt.Println("\033[41m<><> Welcome to the Compliment Generator <><>\033[0m")
 	fmt.Println("Available categories: ")
 	fmt.Println("1. Motivational")
@@ -77,7 +74,7 @@ func main() {
 
 	for {
     fmt.Print(">>> ")
-    input := UserInput() // read new input each time
+    input := UserInput()
     if input == "quit" {
         fmt.Println("Goodbye!")
         break
